@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume</title>
+  <style>
+    #resume {
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: auto;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="resume">
+    <h1>My Resume</h1>
+    <p>Here is my resume content...</p>
+    <!-- Additional resume content -->
+  </div>
+
+  <!-- Download Button -->
+  <button id="downloadButton">Download as PDF</button>
+
+  <!-- Include the html2pdf.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+  <script>
+    const downloadButton = document.getElementById('downloadButton');
+    const resume = document.getElementById('resume');
+
+    downloadButton.addEventListener('click', () => {
+      // Configure the PDF generation settings
+      const opt = {
+        margin: 1,
+        filename: 'My_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      // Generate and download the PDF
+      html2pdf().set(opt).from(resume).save();
+    });
+  </script>
+
+  <a href="https://editable-resume-azaan.vercel.app">Editable Resume</a>
+</br>
+  <a href="https://dynamic-resume-azaan.vercel.app">Dynamic Resume</a>
+</br>
+  <a href="https://static-resume-azaan.vercel.app">Static Resume</a>
+</body>
+</html>
